@@ -13,4 +13,4 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig; // ✅ CommonJS format
+export default nextConfig; // ✅ Use ESM format

@@ -1,0 +1,85 @@
+/* General Styles */
+
+  
+  /* Hero Section */
+  .hero {
+    position: relative;
+    width: 100%;
+    height: auto;
+    text-align: center;
+    background-color: #6B353D;
+    padding: 50px 20px;
+  }
+  
+  .heroContent {
+    color: white;
+    font-size: 24px;
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+  }
+  
+  .heroImage {
+    width: 100%;
+    height: auto;
+    margin-top: 20px;
+  }
+  
+  /* Vision & Mission Section */
+  .visionMission {
+    padding: 50px 20px;
+    text-align: center;
+  }
+  
+  .textContainer {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    flex-wrap: wrap;
+  }
+  
+  .textContainer div {
+    width: 45%;
+    text-align: left;
+  }
+  
+  .missionImage {
+    margin-top: 20px;
+    width: 80%;
+    border-radius: 10px;
+  }
+  
+  /* Features Section */
+  .features {
+    padding: 50px 20px;
+    background-color: #fff;
+  }
+  
+  .featureContainer {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  
+  .featureItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 150px;
+  }
+  
+  .featureItem img {
+    width: 80px;
+    height: auto;
+  }
+  
+  /* Footer */
+  .footer {
+    background-color: #6B353D;
+    color: white;
+    padding: 20px;
+    margin-top: 50px;
+  }
+  

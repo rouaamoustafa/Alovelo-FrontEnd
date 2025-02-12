@@ -1,0 +1,115 @@
+/* General Page Styling */
+.servicesContainer {
+    font-family: Arial, sans-serif;
+    background: #F6F7F4;
+    color: #3D3D3D;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.hero img {
+    width: 100%;
+    max-height: 500px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.hero h1 {
+    font-size: 48px;
+    color: #6B353D;
+    margin-top: 20px;
+}
+
+.hero p {
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+/* Services List */
+.serviceList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 50px 20px;
+}
+
+.serviceCard {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+}
+
+.serviceCard img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 10px;
+}
+
+.serviceCard h3 {
+    font-size: 22px;
+    color: #6B353D;
+}
+
+.serviceCard p {
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+/* Footer Section */
+.footer {
+    background-color: #6B353D;
+    color: white;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+    .hero h1 {
+        font-size: 40px;
+    }
+    .hero p {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 32px;
+    }
+    .hero p {
+        font-size: 16px;
+    }
+    .serviceList {
+        flex-direction: column;
+        align-items: center;
+    }
+    .serviceCard {
+        width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 28px;
+    }
+    .hero p {
+        font-size: 14px;
+    }
+    .serviceCard h3 {
+        font-size: 20px;
+    }
+    .serviceCard p {
+        font-size: 14px;
+    }
+}
