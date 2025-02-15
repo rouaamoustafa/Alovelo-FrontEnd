@@ -1,6 +1,7 @@
+// pages/about.js
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import Head from "next/head";
+import Image from "next/image";
 import styles from "@/styles/About.module.css";
 
 export default function About() {
@@ -10,7 +11,8 @@ export default function About() {
     fetch("http://localhost:5000/api/about/get") // Fetch data from backend
       .then((res) => res.json())
       .then((data) => {
-        setAboutData(data[0]); // Assuming only one document exists
+        // Assuming only one document exists
+        setAboutData(data[0]);
       })
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
@@ -23,64 +25,106 @@ export default function About() {
         <title>Alovelo - About Us</title>
       </Head>
 
+      {/* Top-level background image */}
+      <div className={styles.topImageContainer}>
+  <Image
+    src={
+      aboutData.hero_image
+        ? `http://localhost:5000${aboutData.hero_image}`
+        : "/placeholder.png"
+    }
+    alt="About Hero"
+    layout="fill"              // fill parent container
+    objectFit="cover"   // arbitrary numeric height
+    className={styles.heroImage}
+    unoptimized
+  />
+</div>
+
       {/* Hero Section */}
       <section className={styles.hero}>
-        <div className={styles.heroContent}>
-          <h1>{aboutData.hero_title}</h1>
-          <p>{aboutData.hero_content}</p>
+        <div className={styles.textBlock}>
+          <h1>
+            {aboutData.hero_title }
+          </h1>
+          <p>
+            {aboutData.hero_content }
+          </p>
         </div>
-        <Image 
-  src={`http://localhost:5000${aboutData.hero_image}`} 
-  alt="About Hero"
-  width={1146}
-  height={768}
-  className={styles.heroImage} 
-  unoptimized // Add this if still facing issues
-/>
+      </section>
+
+      {/* Intro Section */}
+      <section className={styles.introSection}>
+        <h2>Vision & Mission</h2>
       </section>
 
       {/* Vision & Mission Section */}
       <section className={styles.visionMission}>
-        <h2>VISION & MISSION</h2>
-        <div className={styles.textContainer}>
-          <div>
-            <h3>{aboutData.vision_title}</h3>
-            <p>{aboutData.vision_content}</p>
+        <div className={styles.textSection}>
+          <div className={styles.visionBlock}>
+            <h2>Vision</h2>
+            <h3>
+              {aboutData.subtitleHeader ||
+                `We dream of a world where celebrations are never ordinary.`}
+            </h3>
+            <p>
+              {aboutData.vision_content ||
+                `We’re all about exceptional cocktails, unforgettable experiences, and a whole lot of fun!`}
+            </p>
           </div>
-          <div>
-            <h3>{aboutData.mission_title}</h3>
-            <p>{aboutData.mission_content}</p>
+
+          <div className={styles.missionBlock}>
+            <h2>Mission</h2>
+            <h3>
+              {aboutData.subtitleHeader ||
+                `We’re all about exceptional cocktails, unforgettable experiences, and a whole lot of fun!`}
+            </h3>
+            <p>
+              {aboutData.mission_content ||
+                `At Alovelo, our one-of-a-kind tricycle bar...`}
+            </p>
           </div>
         </div>
-        <Image 
-          src={`http://localhost:5000${aboutData.main_image}`} 
-          alt="Vision & Mission" 
-          width={800} height={500} 
-          className={styles.missionImage} 
-        />
+
+        <div className={styles.imageSection}>
+          <Image
+            src={
+              aboutData.main_image
+                ? `http://localhost:5000${aboutData.main_image}`
+                : "/assets/mission-vision.png"
+            }
+            alt="Vision & Mission"
+            width={800}
+            height={500}
+            className={styles.missionImage}
+            unoptimized
+          />
+        </div>
       </section>
 
       {/* Features Section */}
-      <section className={styles.features}>
-        <h2>WHAT MAKES US DIFFERENT</h2>
-        <div className={styles.featureContainer}>
-          {aboutData.features.map((feature, index) => (
+      <section className={styles.featuresSection}>
+        <h2>What Makes Us Different</h2>
+        <div className={styles.featuresList}>
+          {/* Map your features from aboutData, or fallback to placeholders */}
+          {aboutData.features?.map((feature, index) => (
             <div key={index} className={styles.featureItem}>
-              <Image 
-                src={`http://localhost:5000${feature.icon}`} 
-                alt={feature.title} 
-                width={100} height={100} 
+              <Image
+                src={
+                  feature.icon
+                    ? `http://localhost:5000${feature.icon}`
+                    : "/assets/Layer_24.png"
+                }
+                alt={feature.title}
+                width={200}
+                height={200}
+                unoptimized
               />
               <p>{feature.title}</p>
             </div>
           ))}
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className={styles.footer}>
-        <p>&copy; 2024 Alovelo. All Rights Reserved.</p>
-      </footer>
     </>
   );
 }

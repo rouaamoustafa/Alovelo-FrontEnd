@@ -1,6 +1,8 @@
+// pages/services.js
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import styles from "../styles/Services.module.css"; // ✅ Import CSS Module
+import pageStyles from "../styles/Services.module.css"; 
+import ServiceRow from "../component/ServicesRow"; // match your actual folder name!
 
 export default function Services() {
   const [servicesData, setServicesData] = useState(null);
@@ -10,66 +12,65 @@ export default function Services() {
     fetch(`${API_URL}/services/get`)
       .then((res) => res.json())
       .then((data) => {
-        if (data.length === 0) {
+        if (!data || data.length === 0) {
           console.error("No services data found");
           return;
         }
 
-        // ✅ Option 1: Get the latest added service (newest createdAt)
+        // pick the newest
         const latestService = data.reduce((prev, current) =>
           new Date(prev.createdAt) > new Date(current.createdAt) ? prev : current
         );
-
-        // ✅ Option 2: Use a specific `_id` if needed
-        // const specificService = data.find(item => item._id === "67ac1985ae9ab56334afe417");
-
-        setServicesData(latestService); // ✅ Use the latest service
+        setServicesData(latestService);
       })
       .catch((err) => console.error("Error fetching services content:", err));
   }, []);
 
   if (!servicesData) return <p>Loading...</p>;
 
+  // Destructure
+  const { heroImage, heroTitle, description, servicesList = [] } = servicesData;
+
   return (
-    <div className={styles.servicesContainer}>
-      {/* Hero Section */}
-      <section className={styles.hero}>
-        <Image
-          src={`http://localhost:5000${servicesData.heroImage}`}
-          alt="Services Hero"
-          width={1200}
-          height={600}
-          unoptimized
-        />
-        <h1>{servicesData.heroTitle}</h1>
-        <p>{servicesData.description}</p>
-      </section>
+    <div>
+      {/* Top hero image */}
+      <Image
+        src={
+          heroImage
+            ? `http://localhost:5000${heroImage}`
+            : "/assets/services-image.png"
+        }
+        alt="Services Hero"
+        width={100}
+        height={100}
+        className={pageStyles.heroImage}
+        unoptimized
+      />
 
-      {/* Services List */}
-      <section className={styles.serviceList}>
-        {servicesData.servicesList?.length > 0 ? (
-          servicesData.servicesList.map((service, index) => (
-            <div key={index} className={styles.serviceCard}>
-              <Image
-                src={`http://localhost:5000${service.icon}`}
-                alt="Service Icon"
-                width={100}
-                height={100}
-                unoptimized
-              />
-              <h3>{service.title}</h3>
-              <p>{service.description}</p>
-            </div>
-          ))
-        ) : (
-          <p>No services available.</p>
-        )}
-      </section>
+      <div className={pageStyles.servicesContainer}>
+        {/* Hero Section: large text paragraph */}
+        <section className={pageStyles.hero}>
+          <p className={pageStyles.heroText}>
+            {description || "Signature Cocktails, Dance-Floor Surprises..."}
+          </p>
+        </section>
 
-      {/* Footer */}
-      <footer className={styles.footer}>
-        <p>Copyright © All Rights Reserved.</p>
-      </footer>
+        {/* Services Snippet: heading + mapped rows */}
+        <div className={pageStyles.servicesSnippet}>
+          <p className={pageStyles.servicesHeading}>
+            {heroTitle || "Our Services"}
+          </p>
+
+          {servicesList.length > 0 ? (
+            servicesList.map((service, index) => (
+              <ServiceRow key={index} service={service} index={index} />
+            ))
+          ) : (
+            <p>No services available</p>
+          )}
+          {/* Removed the extra <ServiceRow /> so we only render from the map */}
+        </div>
+      </div>
     </div>
   );
 }
