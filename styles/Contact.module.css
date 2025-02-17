@@ -1,22 +1,31 @@
 /* Container for the whole form section */
+.pageContainer {
+  display: flex;
+  flex-direction: column;
+  min-height: 40vh; /* ✅ Full viewport height */
+}
 .contactSection {
   max-width: 800px;
-  margin: 0 auto;
-  padding: 40px 20px;
+  margin: 1px 0 0 10%; 
+  flex-grow: 1;
 }
 
 /* Main heading */
 .heading {
-  font-size: 36px;
+  font-size: 130px;
   color: #6B353D;
   margin-bottom: 10px;
+  font-family: 'BOLDE', sans-serif;
+  text-align: start;
+  line-height: 0.8;
 }
 
 /* Subtitle under the heading */
 .subtitle {
-  font-size: 16px;
+  font-size: 28px;
   color: #000;
   margin-bottom: 30px;
+  text-align: start;
 }
 
 /* The form itself */
@@ -30,55 +39,63 @@
 .formRow {
   display: flex;
   gap: 3vw;
+  flex-wrap: wrap; /* Ensures wrapping on smaller screens */
+  justify-content: space-between;
 }
+
 .formGroup {
   flex: 1;
   display: flex;
   flex-direction: column;
+  min-width: 45%;
 }
 
 /* Full-width subject field (optional) */
 .formGroupMessage {
-  width: 800px;
+  width: 100%;
 }
 
 /* Subject input uses black bottom border specifically */
 .subjectInput {
+  font-family: 'Montserrat', sans-serif;
   border: none;
   border-bottom: 1px solid #000;
   font-size: 14px;
   padding: 5px 0;
   outline: none;
-  width: 53vw;
+  width: 100%;
 }
 
 /* Generic input styling for name/email */
 .input {
+  font-family: 'Montserrat', sans-serif;
   border: none;
   border-bottom: 1px solid #000;
   font-size: 14px;
   padding: 5px 0;
   outline: none;
-  width: 25vw; /* side-by-side smaller fields */
+  width: 100%;
 }
 
-/* Textarea for message */
+
 .textarea {
   border: none;
   border-bottom: 1px solid #000;
   font-size: 14px;
   padding: 5px 0;
   outline: none;
-  resize: none; /* disable manual resizing */
-  height: 100px;
-  width: 53vw; /* match subject width if desired */
+  resize: none; /* Disable manual resizing */
+  height: 80px;
+  width: 100%;
+  font-family: 'Montserrat', sans-serif;
 }
 
 /* Highlight on focus */
 .input:focus,
 .subjectInput:focus,
 .textarea:focus {
-  border-bottom-color: #6B353D; /* highlight color */
+  border-bottom-color: #6B353D; 
+  
 }
 
 /* Optional horizontal divider */
@@ -92,38 +109,111 @@
 /* Send button */
 .submitBtn {
   align-self: flex-start;
-  background-color: #ddd;
-  border: none;
-  padding: 10px 20px;
-  font-size: 14px;
-  color: #333;
-  cursor: pointer;
-  border-radius: 4px;
-  transition: background-color 0.2s ease;
+  background-color: #ddd; 
+  color: #814d4d;
+  border: 1px solid #814d4d; 
+  padding: 10px 20px; 
+  font-size: 16px; 
+  font-weight: bold; 
+  text-transform: uppercase; 
+  cursor: pointer; 
+  transition: all 0.3s ease-in-out; 
+  width: 100%;
+  max-width: 200px;
+  display: block; 
+  text-align: center; 
+  margin-bottom: 5%;
+  font-family: 'Montserrat', sans-serif;
 }
+
 .submitBtn:hover {
   background-color: #ccc;
 }
+.footer {
+  margin-top: auto; /* ✅ Pushes footer to bottom */
+}
+/* 💻 Tablet Responsive (768px and below) */
+@media (max-width: 768px) {
+  .contactSection {
+    max-width: 90%;
+    margin: 10px auto;
+    padding: 20px;
+  }
 
-/* Responsiveness */
-@media (max-width: 600px) {
   .heading {
-    font-size: 28px;
+    font-size: 50px;
+    text-align: start;
   }
+
   .subtitle {
-    font-size: 14px;
+    font-size: 20px;
+    text-align: start;
   }
+
   .formRow {
-    flex-direction: column;
+    flex-wrap: wrap; 
+    justify-content: space-between;
   }
-  .formGroupMessage {
-    width: 100%;
+
+  .formGroup {
+    min-width: 48%;
   }
+
   .subjectInput,
-  .textarea {
-    width: 100%;
-  }
+  .textarea,
   .input {
     width: 100%;
+  }
+}
+
+/* 📱 Mobile Responsive (480px and below) */
+@media (max-width: 480px) {
+  .contactSection {
+    max-width: 75%;
+    padding: 15px;
+    align-items: start;
+    margin: 1px 0 0 10%;
+    padding: 10px 0px;
+  }
+
+  .heading {
+    font-size: 50px;
+    text-align: start;
+  }
+
+  .subtitle {
+    font-size: 11px;
+    text-align: start;
+  }
+
+  .formRow {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2vw;
+  }
+
+  .formGroup {
+    min-width: 48%; /* Ensures Full Name & Email stay on the same row */
+  }
+
+  .subjectInput,
+  .textarea,
+  .input {
+    width: 100%;
+  }
+
+  .submitBtn {
+  align-self: flex-start;
+  background-color: #ddd; 
+  color: #814d4d;
+  border: 1px solid #814d4d; 
+  font-size: 10px; 
+  font-weight: bold; 
+  text-transform: uppercase; 
+  cursor: pointer; 
+  transition: all 0.3s ease-in-out; 
+  display: block; 
+  text-align: center; 
+  width: 50%;
   }
 }

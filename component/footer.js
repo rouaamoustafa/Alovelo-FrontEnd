@@ -1,6 +1,7 @@
 // components/Footer.js
 import Image from "next/image";
 import styles from "./Footer.module.css";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -11,10 +12,10 @@ export default function Footer() {
         <div className={styles.footerColumn}>
           <div className={styles.footerLogo}>
             <Image
-              src="/assets/white-logo-edit.png"
+              src="/white-logo-edit.png"
               alt="Alovelo Logo"
-              width={250}
-              height={100}
+              width={200}
+              height={80}
               className={styles.logoImage}
               unoptimized
             />
@@ -25,10 +26,10 @@ export default function Footer() {
         <div className={styles.footerColumn}>
           <h4>NAVIGATION</h4>
           <ul>
-            <li>Home</li>
-            <li>About Us</li>
-            <li>Services</li>
-            <li>Contact Us</li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About Us</a></li>
+            <li><a href="/services">Services</a></li>
+            <li><a href="/contact">Contact Us</a></li>
           </ul>
         </div>
 
@@ -47,7 +48,7 @@ export default function Footer() {
           <ul>
             <li>
               <Image
-                src="/assets/🦆 icon _Instagram_.png"
+                src="/🦆 icon _Instagram_.png"
                 alt="Instagram"
                 width={25}
                 height={25}
@@ -56,7 +57,7 @@ export default function Footer() {
             </li>
             <li>
               <Image
-                src="/assets/🦆 icon _Facebook Square_.png"
+                src="/🦆 icon _Facebook Square_.png"
                 alt="Facebook"
                 width={25}
                 height={25}
@@ -65,7 +66,7 @@ export default function Footer() {
             </li>
             <li>
               <Image
-                src="/assets/🦆 icon _What's App_.png"
+                src="/🦆 icon _What's App_.png"
                 alt="WhatsApp"
                 width={25}
                 height={25}
@@ -80,7 +81,7 @@ export default function Footer() {
       <div className={styles.footerIcons}>
         <div title="Location">
           <Image
-            src="/assets/image 21.png"
+            src="/image 21.png"
             alt="Location Icon"
             width={35}
             height={35}
@@ -89,7 +90,7 @@ export default function Footer() {
         </div>
         <div title="Phone">
           <Image
-            src="/assets/image 20.png"
+            src="/image 20.png"
             alt="Phone Icon"
             width={35}
             height={35}
@@ -98,7 +99,7 @@ export default function Footer() {
         </div>
         <div title="Email">
           <Image
-            src="/assets/image 19.png"
+            src="/image19.png"
             alt="Email Icon"
             width={35}
             height={35}
@@ -108,7 +109,7 @@ export default function Footer() {
       </div>
 
       {/* Bottom Row */}
-      <div className={styles.footerBottom}>&copy; All Rights Reserved</div>
+      <div className={styles.footerBottom}>Copyright &copy; All Rights Reserved</div>
     </footer>
   );
 }

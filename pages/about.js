@@ -24,18 +24,18 @@ export default function About() {
       <Head>
         <title>Alovelo - About Us</title>
       </Head>
-
-      {/* Top-level background image */}
       <div className={styles.topImageContainer}>
+        
   <Image
     src={
       aboutData.hero_image
         ? `http://localhost:5000${aboutData.hero_image}`
         : "/placeholder.png"
     }
+    width={100}
+    height={200}
     alt="About Hero"
-    layout="fill"              // fill parent container
-    objectFit="cover"   // arbitrary numeric height
+       // arbitrary numeric height
     className={styles.heroImage}
     unoptimized
   />

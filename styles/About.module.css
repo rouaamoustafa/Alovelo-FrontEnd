@@ -1,19 +1,14 @@
 /* styles/About.module.css */
-
-/* Global Container: remove any horizontal overflow */
-
-
 /* Top-level image container */
 .topImageContainer {
-  width: 100%;
-  height: 150vh; /* match your design */
+  width: 100%; 
   overflow: hidden;
   position: relative;
 }
 
 .heroImage {
   width: 100%;
-  height: 150vh;
+  height: 130vh;
   object-fit: cover; /* ensure it covers container */
 }
 
@@ -22,25 +17,23 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: -6vh;
   overflow-x: hidden;
 }
 
 .textBlock {
   text-align: left;
   width: 80%;
-  height: 50vh;
 }
 
 .textBlock h1 {
-  font-size: 60px;
+  font-size: 36px;
   font-weight: bold;
   color: #000;
   margin-bottom: 10px;
 }
 
 .textBlock p {
-  font-size: 36px;
+  font-size: 28px;
   line-height: 1;
   color: #000;
 }
@@ -64,65 +57,63 @@
 /* VISION & MISSION SECTION */
 .visionMission {
   display: flex;
-  justify-content: space-between; /* text on far left, image on far right */
-  align-items: flex-start;
+  justify-content: space-between; 
+  align-items: center; 
   width: 100%;
   margin: 50px auto;
-  gap: 40px;
+  gap: 60px; 
   text-align: start;
 }
 
+/* Text Section */
 .textSection {
   flex: 0 0 50%;
   display: flex;
   flex-direction: column;
-  gap: 30px;
-  padding-left: 10vw; /* left padding for text if desired */
+  gap: 15px; 
+  padding-left: 8vw;
 }
 
-.visionBlock,
-.missionBlock {
-  color: #3d3d3d;
-}
-
-/* Vision/Mission headings */
+/* Headings */
 .visionBlock h2,
 .missionBlock h2 {
   font-size: 42px;
   color: #6B353D;
-  margin-bottom: 10px;
+  margin-bottom: 8px; 
   text-transform: uppercase;
   font-weight: bold;
 }
 
-/* Additional sub-headings for Vision & Mission */
 .visionBlock h3,
 .missionBlock h3 {
-  font-size:36px;
-  margin-bottom: 5px;
+  font-size: 32px;
+  margin-bottom: 3px; 
   font-weight: 600;
 }
 
-/* Paragraph text */
 .visionBlock p,
 .missionBlock p {
-  font-size: 24px;
+  font-size: 22px;
   line-height: 1.6;
+  margin-bottom: 20px; 
 }
 
+/* Image Section */
 .imageSection {
-  flex: 0 0 auto;
+  flex: 0 0 45%;
   display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
+  justify-content: center; 
+  align-items: center; 
 }
 
+/* Mission Image */
 .missionImage {
   max-width: 100%;
   height: auto;
   border-radius: 8px;
-  align-self: flex-end;
+  align-self: center;
 }
+
 
 /* FEATURES SECTION */
 .featuresSection {
@@ -142,10 +133,9 @@
 /* Container for the 3 icons */
 .featuresList {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
   align-items: stretch;
-  gap: 40px;
+  gap: 4vh;
   max-width: 1000px;
   margin: 0 auto;
 }
@@ -174,53 +164,127 @@
 }
 
 /* ----- MEDIA QUERIES ----- */
-@media (max-width: 992px) {
-  .heroImage {
-    height: 100vh;
-  }
-}
 
 @media (max-width: 768px) {
+  .heroImage {
+    width: 100%;
+    height: 60vh; 
+  }
+  .textBlock {
+    width: 90%;
+  }
+
   .textBlock h1 {
+    font-size: 45px; 
+  }
+
+  .textBlock p {
+    font-size: 28px; 
+    line-height: 1.4;
+  }
+  .visionMission {
+    flex-direction: row; 
+    align-items: center;
+    gap: 30px;
+  }
+ 
+  .textSection {
+    flex: 1;
+    padding-left: 3vw;
+  }
+
+  .visionBlock h2,
+  .missionBlock h2 {
     font-size: 28px;
   }
-  .textBlock p {
-    font-size: 14px;
+
+  .visionBlock h3,
+  .missionBlock h3 {
+    font-size: 22px;
   }
-  .visionMission img {
-    max-width: 90%;
+
+  .visionBlock p,
+  .missionBlock p {
+    font-size: 16px;
   }
-  .introSection h2 {
-    font-size: 36px;
+
+  .imageSection {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .missionImage {
+    max-width: 85%;
+    height: 50vh;
+  }
+  .featureItem {
+    min-width: 150px;
+  }
+
+  .featureItem img {
+    width: 12vw;
+    max-height: 10vh;
+  }
+
+  .featureItem p {
+    font-size: 18px;
+  }
+  .featuresList {
+    gap: 1vh;
+    
   }
 }
 
+/* Mobile (480px and below) */
 @media (max-width: 480px) {
-  .textBlock h1 {
+  .heroImage {
+    width: 100%;
+    height: 60vh; 
+  }
+  .visionMission {
+    flex-direction: row; 
+    gap: 15px;
+  }
+
+  .textSection {
+    padding-left: 2vw; 
+  }
+
+  .visionBlock h2,
+  .missionBlock h2 {
     font-size: 24px;
   }
-  .textBlock p {
-    font-size: 12px;
-  }
-  .visionBlock,
-  .missionBlock {
-    max-width: 100%;
-  }
-}
 
-@media (max-width: 768px) {
+  .visionBlock h3,
+  .missionBlock h3 {
+    font-size: 20px;
+  }
+
+  .visionBlock p,
+  .missionBlock p {
+    font-size: 14px;
+    line-height: 1.3;
+  }
+
+  .imageSection {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .missionImage {
+    max-width: 75%; 
+    height: 30vh;
+  }
   .featureItem {
-    max-width: 100%;
+    min-width: 120px;
   }
-  .featureItem img {
-    width: 150px;
-    height: 150px;
-  }
-}
 
-@media (max-width: 480px) {
   .featureItem img {
-    width: 120px;
-    height: 120px;
+    width: 15vw;
+    max-height: 8vh;
+  }
+
+  .featureItem p {
+    font-size: 16px;
   }
 }

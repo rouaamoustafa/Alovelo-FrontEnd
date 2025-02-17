@@ -1,5 +1,16 @@
-import "@/styles/globals.css";
+import { Montserrat } from "next/font/google";
+import Header from "../component/header";
+import Footer from "../component/footer";
+import "../styles/globals.css"; // Import global CSS
 
-export default function App({ Component, pageProps }) {
-  return <Component {...pageProps} />;
+const montserrat = Montserrat({ subsets: ["latin"], weight: ["400", "700"] });
+
+export default function MyApp({ Component, pageProps }) {
+  return (
+    <main className={montserrat.className}>
+      <Header />
+      <Component {...pageProps} />
+      <Footer/>
+    </main>
+  );
 }

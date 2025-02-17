@@ -1,8 +1,8 @@
 // pages/services.js
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import pageStyles from "../styles/Services.module.css"; 
-import ServiceRow from "../component/ServicesRow"; // match your actual folder name!
+import styles from "../styles/Services.module.css";
+import ServiceItem from "../component/ServicesItem";  // Import the reusable component
 
 export default function Services() {
   const [servicesData, setServicesData] = useState(null);
@@ -17,10 +17,11 @@ export default function Services() {
           return;
         }
 
-        // pick the newest
+        // Example: pick the newest service entry
         const latestService = data.reduce((prev, current) =>
           new Date(prev.createdAt) > new Date(current.createdAt) ? prev : current
         );
+
         setServicesData(latestService);
       })
       .catch((err) => console.error("Error fetching services content:", err));
@@ -28,47 +29,54 @@ export default function Services() {
 
   if (!servicesData) return <p>Loading...</p>;
 
-  // Destructure
+  // Destructure for convenience
   const { heroImage, heroTitle, description, servicesList = [] } = servicesData;
 
   return (
     <div>
-      {/* Top hero image */}
+      {/* Top "hero" image */}
       <Image
         src={
-          heroImage
-            ? `http://localhost:5000${heroImage}`
-            : "/assets/services-image.png"
+          heroImage ? `http://localhost:5000${heroImage}` : "/assets/services-image.png"
         }
         alt="Services Hero"
         width={100}
         height={100}
-        className={pageStyles.heroImage}
+        className={styles.heroImage}
         unoptimized
       />
 
-      <div className={pageStyles.servicesContainer}>
+      <div className={styles.servicesContainer}>
         {/* Hero Section: large text paragraph */}
-        <section className={pageStyles.hero}>
-          <p className={pageStyles.heroText}>
-            {description || "Signature Cocktails, Dance-Floor Surprises..."}
-          </p>
+        <section className={styles.hero}>
+          <p className={styles.heroText}>{description || `Signature Cocktails, Dance-Floor Surprises...`}</p>
         </section>
 
-        {/* Services Snippet: heading + mapped rows */}
-        <div className={pageStyles.servicesSnippet}>
-          <p className={pageStyles.servicesHeading}>
-            {heroTitle || "Our Services"}
-          </p>
+        {/* Services Snippet */}
+        <div className={styles.servicesSnippet}>
+          <p className={styles.servicesHeading}>Our Services</p>
 
-          {servicesList.length > 0 ? (
-            servicesList.map((service, index) => (
-              <ServiceRow key={index} service={service} index={index} />
-            ))
-          ) : (
-            <p>No services available</p>
-          )}
-          {/* Removed the extra <ServiceRow /> so we only render from the map */}
+          {/* Reusing ServiceItem Component 4 Times with Text Inside */}
+          <ServiceItem
+            service={servicesList[0] || {}}
+            imagePosition="left"
+            defaultIcon="/assets/image 24.png"
+          />
+          <ServiceItem
+            service={servicesList[1] || {}}
+            imagePosition="right"
+            defaultIcon="/assets/Isolation_Mode.png"
+          />
+          <ServiceItem
+            service={servicesList[2] || {}}
+            imagePosition="left"
+            defaultIcon="/assets/image 26.png"
+          />
+          <ServiceItem
+            service={servicesList[3] || {}}
+            imagePosition="right"
+            defaultIcon="/assets/ballons.png"
+          />
         </div>
       </div>
     </div>
