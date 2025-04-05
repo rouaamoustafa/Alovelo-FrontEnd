@@ -8,7 +8,7 @@ export default function About() {
   const [aboutData, setAboutData] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/about/get") // Fetch data from backend
+    fetch("https://alovelo-backend.onrender.com/api/about/get") // Fetch data from backend
       .then((res) => res.json())
       .then((data) => {
         // Assuming only one document exists
@@ -29,7 +29,7 @@ export default function About() {
   <Image
     src={
       aboutData.hero_image
-        ? `http://localhost:5000${aboutData.hero_image}`
+        ? `https://alovelo-backend.onrender.com${aboutData.hero_image}`
         : "/placeholder.png"
     }
     width={100}
@@ -90,7 +90,7 @@ export default function About() {
           <Image
             src={
               aboutData.main_image
-                ? `http://localhost:5000${aboutData.main_image}`
+                ? `https://alovelo-backend.onrender.com${aboutData.main_image}`
                 : "/assets/mission-vision.png"
             }
             alt="Vision & Mission"
@@ -109,17 +109,18 @@ export default function About() {
           {/* Map your features from aboutData, or fallback to placeholders */}
           {aboutData.features?.map((feature, index) => (
             <div key={index} className={styles.featureItem}>
-              <Image
-                src={
-                  feature.icon
-                    ? `http://localhost:5000${feature.icon}`
-                    : "/assets/Layer_24.png"
-                }
-                alt={feature.title}
-                width={200}
-                height={200}
-                unoptimized
-              />
+            <Image
+  src={
+    feature.icon
+      ? `https://alovelo-backend.onrender.com${feature.icon}`
+      : "/assets/Layer_24.png"
+  }
+  alt={feature.title}
+  width={200}
+  height={200}
+  style={{ objectFit: "contain" }} // or "cover" depending on your layout
+  unoptimized
+/>
               <p>{feature.title}</p>
             </div>
           ))}

@@ -3,6 +3,8 @@ body {
   font-family: var(--font-montserrat), serif;
   background-color: #f8f8f8;
   overflow-x: hidden;
+margin: 0;
+padding: 0;
 }
 .hero-section {
   position: relative;
@@ -57,7 +59,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  
+  margin-top: 3vh;
 }
 .event-image {
   width: 98%;
@@ -112,8 +114,29 @@ body {
 .imageGallery img:nth-child(2) {
   width: 50%; /* ✅ Middle image takes 50% width (2x the size of others) */
 }
+.quote{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.boutton-home{
+  background-color: #ddd; 
+  color: #814d4d;
+  border: 1px solid #814d4d; 
+  padding: 10px 20px; 
+  font-size: 16px; 
+  font-weight: bold; 
+  text-transform: uppercase; 
+  cursor: pointer; 
+  transition: all 0.3s ease-in-out; 
+  width: 100%;
 
-
+  max-width: 200px;
+  display: block; 
+  text-align: center; 
+  font-family: 'Montserrat', sans-serif;
+  text-decoration: none;
+}
 @media (max-width: 1279px) and (min-width: 1000px){
   .hero-image {
     height: 115vh;
@@ -200,6 +223,7 @@ body {
   font-size: 2vw;
   width: auto;
   margin-left: 11vw;
+
   }
   .events-text {
     margin-right:5vw ;

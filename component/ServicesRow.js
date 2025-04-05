@@ -7,7 +7,7 @@ export default function ServicesRow({ service, index }) {
 
   // Provide fallback if there's no icon, title, or description
   const iconUrl = service.icon
-    ? `http://localhost:5000${service.icon}`
+    ? `https://alovelo-backend.onrender.com${service.icon}`
     : "/assets/fallback.png";
 
   const title = service.title || "Default Service Title";

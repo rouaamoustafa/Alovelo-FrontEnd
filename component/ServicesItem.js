@@ -9,7 +9,7 @@ export default function ServiceItem({ service, imagePosition, defaultIcon }) {
       {imagePosition === "left" && (
         <div className={styles.serviceLeft}>
           <Image
-            src={service.icon ? `http://localhost:5000${service.icon}` : defaultIcon}
+            src={service.icon ? `https://alovelo-backend.onrender.com${service.icon}` : defaultIcon}
             alt={`${service.title} Icon`}
             className={styles.serviceIcon}
             width={200}
@@ -31,7 +31,7 @@ export default function ServiceItem({ service, imagePosition, defaultIcon }) {
       {imagePosition === "right" && (
         <div className={styles.serviceLeft}>
           <Image
-            src={service.icon ? `http://localhost:5000${service.icon}` : defaultIcon}
+            src={service.icon ? `https://alovelo-backend.onrender.com${service.icon}` : defaultIcon}
             alt={`${service.title} Icon`}
             className={styles.serviceIcon}
             width={200}

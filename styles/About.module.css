@@ -40,7 +40,7 @@
 
 /* INTRO TEXT SECTION */
 .introSection {
-  margin: 0 auto;
+  margin-top: 8vh;
   padding: 0 20px;
   text-align: center;
 }
@@ -59,9 +59,8 @@
   display: flex;
   justify-content: space-between; 
   align-items: center; 
-  width: 100%;
-  margin: 50px auto;
-  gap: 60px; 
+  width: 95%;
+  margin: 3vh auto;
   text-align: start;
 }
 
@@ -104,6 +103,7 @@
   display: flex;
   justify-content: center; 
   align-items: center; 
+ 
 }
 
 /* Mission Image */
@@ -112,6 +112,7 @@
   height: auto;
   border-radius: 8px;
   align-self: center;
+  margin-right: 10vw;
 }
 
 

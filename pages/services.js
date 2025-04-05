@@ -6,7 +6,7 @@ import ServiceItem from "../component/ServicesItem";  // Import the reusable com
 
 export default function Services() {
   const [servicesData, setServicesData] = useState(null);
-  const API_URL = "http://localhost:5000/api";
+  const API_URL = "https://alovelo-backend.onrender.com/api";
 
   useEffect(() => {
     fetch(`${API_URL}/services/get`)
@@ -37,7 +37,7 @@ export default function Services() {
       {/* Top "hero" image */}
       <Image
         src={
-          heroImage ? `http://localhost:5000${heroImage}` : "/assets/services-image.png"
+          heroImage ? `https://alovelo-backend.onrender.com${heroImage}` : "/assets/services-image.png"
         }
         alt="Services Hero"
         width={100}
